@@ -1,14 +1,13 @@
 import React from "react";
-import '../../styles/user.css'
+import '../user.css'
+import { Logo } from "../../Logo";
 
-export function Login(){
+export function Register(){
 
 
     return (
-        <div className="background">
-            <div className="logo">
-                <span className="elo">ELO</span><span className="group">GROUP</span>
-            </div>
+        <div className="background register">
+            <Logo/>
             <form>
                 <div className="formInput">
                     <label>Usuário *</label>
@@ -19,12 +18,13 @@ export function Login(){
                     <br/>
                     <input required></input>
                     <br/>
+                    <label>Confirmar Password *</label>
+                    <br/>
+                    <input required></input>
+                    <br/>
                 </div>
-                <button type="submit">Logar</button>
+                <button type="submit">Registrar</button>
             </form>
-            <button>Registrar</button>
         </div>
     )
 }
-
-export default Login

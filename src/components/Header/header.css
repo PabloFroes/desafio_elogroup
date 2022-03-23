@@ -1,0 +1,12 @@
+.header{
+    margin: auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 800px;
+}
+
+.logout{
+    margin: auto;
+}

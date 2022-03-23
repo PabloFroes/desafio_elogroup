@@ -1,0 +1,22 @@
+.logo {
+    background-color: black;
+    color: white;
+    font-size: 38px;
+    margin: 20px auto 20px auto;
+    padding: 5px;
+    width: 260px;
+    text-align: center;
+}
+
+.logo:hover{
+    cursor: default;
+}
+
+.elo{
+    font-weight: 300;
+    padding-right: 4px;
+}
+
+.group{
+    font-weight: 700;
+}

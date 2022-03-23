@@ -15,27 +15,6 @@
     margin: auto;
 }
 
-.logo {
-    background-color: black;
-    color: white;
-    font-size: 40px;
-    margin: 20px 30px 20px 30px;
-    padding-bottom: 4px;
-}
-
-.logo:hover{
-    cursor: default;
-}
-
-.elo{
-    font-weight: lighter;
-    padding-right: 4px;
-}
-
-.group{
-    font-weight: 500;
-}
-
 .formInput {
     text-align: left;
     margin-left: 60px;
