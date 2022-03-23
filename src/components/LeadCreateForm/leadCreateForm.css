@@ -1,0 +1,27 @@
+form{
+    display: flex;
+    justify-content: space-around;
+}
+
+table{
+    text-align: center;
+    width: 300px;
+    height: 150px;
+}
+
+td label{
+    margin: 0 40px 0 40px ;
+}
+
+th input{
+    margin: 0;
+    width: 40px;
+}
+td input{
+    margin: 0;
+    width: 40px;
+}
+
+button{
+    width: 300px;
+}

@@ -1,6 +1,6 @@
 import { Header } from "../../components/Header/Header";
 import { LeadTable } from "../../components/LeadTable";
-import "./leadView.css"
+import "../../styles/leadView.css"
 
 export function LeadView () {
     return (

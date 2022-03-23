@@ -1,4 +1,5 @@
-
+const userAlreadyExist = "Usuário já existente";
+const userOrPassWrong = "Usuário ou senha incorreto";
 
 const UsersService = {
     register: (username,password) => {
@@ -9,7 +10,7 @@ const UsersService = {
             }else {
                 const user = users.find(user => user.username === username)
                 if(user){
-                    throw "Usuário já existente";
+                    throw userAlreadyExist;
                 }else{
                     users.push({username,password})
                     localStorage.setItem("users", JSON.stringify(users))
@@ -27,7 +28,7 @@ const UsersService = {
                     localStorage.setItem("userLogged", JSON.stringify({username,password}))
                 }
                 else{
-                    throw "Usuário ou senha incorreto";
+                    throw userOrPassWrong;
                 }    
         } catch (error) {
             throw error

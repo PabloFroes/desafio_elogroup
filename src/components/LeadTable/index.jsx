@@ -1,11 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./leadTable.css"
 
 
 export function LeadTable () {
     return(
         <div className="container">
-            <button>Novo Lead +</button>
+            <Link to="/lead-create">
+                <button>Novo Lead +</button>   
+            </Link>
             <table>
                 <thead>
                     <tr>
