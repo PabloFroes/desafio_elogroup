@@ -1,0 +1,14 @@
+.pageTitle{
+    font-size: 28px;
+    font-weight: bolder;
+    text-align: center;
+    margin: 10px auto 10px auto;
+}
+
+.page{
+    width: 800px;
+    min-height: 500px;
+    margin: auto;
+    margin-top: 10%;
+    border: 1px solid black;
+}

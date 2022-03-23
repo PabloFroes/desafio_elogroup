@@ -5,6 +5,7 @@ import "./leadTable.css"
 export function LeadTable () {
     return(
         <div className="container">
+            <button>Novo Lead +</button>
             <table>
                 <thead>
                     <tr>
