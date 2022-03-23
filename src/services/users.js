@@ -2,6 +2,7 @@ const userAlreadyExist = "Usuário já existente";
 const userOrPassWrong = "Usuário ou senha incorreto";
 
 const UsersService = {
+
     register: (username,password) => {
         try {
             let users = JSON.parse(localStorage.getItem("users"))
@@ -20,6 +21,7 @@ const UsersService = {
             throw error
         }
     },
+
     login: (username,password) => {
         const users = JSON.parse(localStorage.getItem("users"))
         const user = users.find(user => user.username === username)
@@ -35,6 +37,7 @@ const UsersService = {
         }
 
     },
+    
     logout: () => {
         localStorage.removeItem("userLogged",null)
     }

@@ -1,27 +1,41 @@
-form{
+.formLeadCreate{
     display: flex;
     justify-content: space-around;
 }
 
-table{
+.checkboxTable{
     text-align: center;
     width: 300px;
     height: 150px;
 }
 
-td label{
+.labelLeadCreate{
     margin: 0 40px 0 40px ;
 }
 
-th input{
-    margin: 0;
-    width: 40px;
-}
-td input{
+.inputLeadCreate{
     margin: 0;
     width: 40px;
 }
 
-button{
-    width: 300px;
+#btnCancel{
+    width: 100px;
+    margin-right: 20px;
+    background-color: lightcoral;
+}
+
+#btnCancel:hover{
+    background-color: rgb(238, 103, 103);
+}
+
+.btnSaveLead{
+    width: 180px;
+}
+
+.error.leadCreate{
+    margin: auto;
+    width: 200px;
+    text-align: center;
+    font-weight: 500;
+
 }

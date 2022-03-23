@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import '../user.css'
+import '../user.css';
 import { Logo } from "../../Logo";
 import UsersService from "../../../services/users";
 import { Navigate } from "react-router-dom";
@@ -9,27 +9,27 @@ export function Register(){
     const[username, setUsername] = useState("");
     const[password, setPassword] = useState("");
     const[confirmPassword, setConfirmPassword] = useState("");
-    const [redirectToLogin, setRedirectToLogin] = useState(false)
-    const [error, setError] = useState("")
+    const [redirectToLogin, setRedirectToLogin] = useState(false);
+    const [error, setError] = useState("");
 
-    const error_confirmPassword = "Password e confirmação devem ser iguais"
+    const error_confirmPassword = "Password e confirmação devem ser iguais";
 
     const HandleSubmit = async (evt) => {
         evt.preventDefault()
         try {
             if(confirmPassword === password){
-                await UsersService.register(username,password)
-                setRedirectToLogin(true)
+                await UsersService.register(username,password);
+                setRedirectToLogin(true);
             }else {
-                throw error_confirmPassword
+                throw error_confirmPassword;
             }
         } catch (error){
-            setError(error)
+            setError(error);
         }
     }
 
     if(redirectToLogin){
-        return <Navigate to="/"/>
+        return <Navigate to="/"/>;
     }
 
 
