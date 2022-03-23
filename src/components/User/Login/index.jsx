@@ -11,6 +11,7 @@ export function Login(){
     const[password, setPassword] = useState("");
     const[redirectToRegister, setRedirectToRegister] = useState(false)
     const[redirectToLeadTable, setRedirectToLeadTable] = useState(false)
+    const [error, setError] = useState("")
 
     const HandleSubmit = async (evt) => {
         evt.preventDefault()
@@ -20,7 +21,7 @@ export function Login(){
             setRedirectToLeadTable(true)
             console.log("completed")
         } catch (error){
-            console.log(error)
+            setError(error)
         }
     }  
 
@@ -47,6 +48,8 @@ export function Login(){
                     <input  type="password" name="password" required value={password} onChange={e => setPassword(e.target.value)}></input>
                     <br/>
                 </div>
+                <p className="error">{error ? error : ""}</p>
+                <br/>
                 <button type="submit">Entrar</button>
             </form>
             <button onClick={e => setRedirectToRegister(true)}>Registrar</button>

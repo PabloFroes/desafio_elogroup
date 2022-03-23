@@ -10,20 +10,21 @@ export function Register(){
     const[password, setPassword] = useState("");
     const[confirmPassword, setConfirmPassword] = useState("");
     const [redirectToLogin, setRedirectToLogin] = useState(false)
+    const [error, setError] = useState("")
+
+    const error_confirmPassword = "Password e confirmação devem ser iguais"
 
     const HandleSubmit = async (evt) => {
         evt.preventDefault()
         try {
-            console.log(username,password)
             if(confirmPassword === password){
                 await UsersService.register(username,password)
-                console.log("register complete")
                 setRedirectToLogin(true)
             }else {
-                console.log("wrong confirmPassword")
+                throw error_confirmPassword
             }
         } catch (error){
-            console.log(error)
+            setError(error)
         }
     }
 
@@ -43,13 +44,15 @@ export function Register(){
                     <br/>
                     <label>Password *</label>
                     <br/>
-                    <input name="password" type="password" required value={password} onChange={e => setPassword(e.target.value)}></input>
+                    <input name="password" type="password" required value={password} onChange={e => setPassword(e.target.value)} pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#]).{8,}" title="Password deve possuir ao menos 8 caracteres, contendo ao menos um carácter especial, um carácter numérico, um carácter alfanumérico"></input>
                     <br/>
                     <label>Confirmar Password *</label>
                     <br/>
-                    <input name="confirmPassword" type="password" required value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)}></input>
+                    <input name="confirmPassword" type="password" required value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#]).{8,}" title="Password deve possuir ao menos 8 caracteres, contendo ao menos um carácter especial, um carácter numérico, um carácter alfanumérico"></input>
                     <br/>
                 </div>
+                <p className="error">{error ? error : ""}</p>
+                <br/>
                 <button type="submit">Registrar</button>
             </form>
         </div>

@@ -2,17 +2,36 @@
 
 const UsersService = {
     register: (username,password) => {
-        localStorage.setItem("user", JSON.stringify({username,password}))
+        try {
+            let users = JSON.parse(localStorage.getItem("users"))
+            if(!users){
+                localStorage.setItem("users", JSON.stringify([{username,password}]))
+            }else {
+                const user = users.find(user => user.username === username)
+                if(user){
+                    throw "Usuário já existente";
+                }else{
+                    users.push({username,password})
+                    localStorage.setItem("users", JSON.stringify(users))
+                }
+            }
+        } catch (error) {
+            throw error
+        }
     },
     login: (username,password) => {
-        const user = JSON.parse(localStorage.getItem("user"))
+        const users = JSON.parse(localStorage.getItem("users"))
+        const user = users.find(user => user.username === username)
+        try {
                 if(user.username === username && user.password === password){
                     localStorage.setItem("userLogged", JSON.stringify({username,password}))
-                    console.log("logged")
-                }        
-                else{
-                    console.log("error username")
                 }
+                else{
+                    throw "Usuário ou senha incorreto";
+                }    
+        } catch (error) {
+            throw error
+        }
 
     },
     logout: () => {
