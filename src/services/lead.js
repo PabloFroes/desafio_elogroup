@@ -13,6 +13,15 @@ const LeadService = {
         } catch (error) {
             throw error
         }
+    },
+
+    get: () => {
+        try {
+            const leads =  JSON.parse(localStorage.getItem("leads"))
+            return leads
+        } catch (error) {
+            
+        }
     }
 
 

@@ -4,9 +4,24 @@
 }
 
 .checkboxTable{
+    width: 100%;
+    border-collapse: collapse;
     text-align: center;
     width: 300px;
     height: 150px;
+}
+
+.leadCreateThead{
+    background-color: gray;
+    color: white;
+}
+
+.trLeadCreate:nth-child(even) {
+    background: #CCC
+}
+
+.trLeadCreate:nth-child(odd) {
+    background: #FFF
 }
 
 .labelLeadCreate{

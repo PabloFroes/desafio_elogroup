@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import LeadService from "../../services/lead";
 import "./leadCreateForm.css";
 
@@ -15,6 +15,7 @@ export function LeadCreateForm () {
     const[checkbox4, setCheckbox4] = useState(false);
     const[error, setError] = useState("")
     //const oportunidades = ["RPA","Produto Digital","Analytics","BPM"]
+    const[redirect, setRedirect] = useState(false)
 
     const errorCheckbox = "Necessário selecionar ao menos uma oportunidade"
 
@@ -33,12 +34,17 @@ export function LeadCreateForm () {
             if(checkbox1 || checkbox2 || checkbox3 || checkbox4){
                 const lead = {name,tel,email,"RPA":checkbox1,"Produto Digital":checkbox2,"Analytics":checkbox3,"BPM":checkbox4,"Status": "Cliente em Potencial"}
                 LeadService.create(lead)
+                setRedirect(true)
             }else {
                 throw errorCheckbox
             }
         } catch (error) {
             setError(error)
         }
+    }
+
+    if(redirect){
+        return <Navigate to="/lead-table"/>
     }
 
 
@@ -62,26 +68,26 @@ export function LeadCreateForm () {
                 <div>
                     <label>Oportunidades *</label>
                     <table className="checkboxTable">
-                        <thead>
+                        <thead className="leadCreateThead">
                             <tr>
                                 <th><input className="inputLeadCreate" type="checkbox" name="oportunidades" onChange={e => allCheckboxChange(e.target.checked)}/></th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr className="trLeadCreate">
                                 <td><input className="inputLeadCreate" type="checkbox" id="RPA" name="oportunidades" value="RPA" onChange={e => setCheckbox1(!checkbox1)} checked={checkbox1}/></td>
                                 <td><label htmlFor="RPA" className="labelLeadCreate">RPA</label></td>
                             </tr>
-                            <tr>
+                            <tr className="trLeadCreate">
                                 <td><input className="inputLeadCreate" type="checkbox" id="Produto Digital" name="oportunidades" value="Produto Digital" onChange={e => setCheckbox2(!checkbox2)} checked={checkbox2}/></td>
                                 <td><label htmlFor="Produto Digital" className="labelLeadCreate">Produto Digital</label></td>
-                            </tr>
-                            <tr>
+                            </tr >
+                            <tr className="trLeadCreate">
                                 <td><input className="inputLeadCreate" type="checkbox" id="Analytics" name="oportunidades" value="Analytics" onChange={e => setCheckbox3(!checkbox3)} checked={checkbox3}/></td>
                                 <td><label htmlFor="Analytics" className="labelLeadCreate">Analytics</label></td>
                             </tr>
-                            <tr>
+                            <tr className="trLeadCreate">
                                 <td><input className="inputLeadCreate" type="checkbox" id="BPM" name="oportunidades" value="BPM" onChange={e => setCheckbox4(!checkbox4)} checked={checkbox4}/></td>
                                 <td><label htmlFor="BPM" className="labelLeadCreate">BPM</label></td>
                             </tr>
