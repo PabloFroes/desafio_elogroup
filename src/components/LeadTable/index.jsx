@@ -24,11 +24,21 @@ export function LeadTable () {
         fetchLeads();
     },[]);
 
-    function sameRow (event) {
+    function sameRow () {
         if(row === rowTarget){
             return true
         }else {
             return false
+        }
+    }
+
+    function allowDrop () {
+        if(index < indexTarget){
+            if(sameRow()){
+                if(indexTarget-index === 1){
+                    return true
+                }
+            }
         }
     }
 
@@ -40,14 +50,19 @@ export function LeadTable () {
 
 
     function dragEnd (event){
-        if(sameRow(event) && index < indexTarget){
+        if(allowDrop()){
             event.target.innerHTML = ""       
         }
     }
 
-    function drop (event,item,status) {
-            if(index < indexTarget && sameRow()){
+    async function drop (event,item,status) {
+            if(allowDrop()){
                 event.target.children[0].innerHTML= item.name
+                try {
+                    await LeadService.update(row,status)
+                } catch (error) {
+                    
+                }
             }
     }
     function dragOver (event, indexTarget){
