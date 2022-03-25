@@ -39,9 +39,22 @@ const LeadService = {
         } catch (error) {
             throw error
         }
+    },
+    
+    delete: (index) => {
+        try {
+            const leads = JSON.parse(localStorage.getItem("leads"))
+            if(leads){
+                leads.splice(index,1)
+                localStorage.setItem("leads", JSON.stringify(leads))  
+                console.log("lead deleted") 
+            }else{
+                throw leadError
+            }
+        } catch (error) {
+            throw error
+        }
     }
-
-
 }
 
 export default LeadService

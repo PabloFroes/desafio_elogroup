@@ -50,3 +50,19 @@ td{
 .trLead:nth-child(odd) {
     background: #FFF
 }
+.tableBtn{
+    margin: 5px;
+    color: white;
+}
+
+.tableBtn.remove{
+    margin-top: 10px;
+    padding: 0 5px 0 5px;
+    background-color: red;
+    border-radius: 100%;
+}
+
+.tableBtn.details{
+    color: black;
+    font-size: 30px;
+}
