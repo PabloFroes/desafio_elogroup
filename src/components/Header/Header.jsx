@@ -11,7 +11,6 @@ export function Header() {
     async function logout () {
         try {
            await UsersService.logout() 
-           console.log("ok")
            setRedirectToLogin(true)
         } catch (error) {
             console.log(error)

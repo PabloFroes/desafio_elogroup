@@ -16,10 +16,8 @@ export function Login(){
     const HandleSubmit = async (evt) => {
         evt.preventDefault()
         try {
-            console.log(username,password)
             await UsersService.login(username,password)
             setRedirectToLeadTable(true)
-            console.log("completed")
         } catch (error){
             setError(error)
         }
