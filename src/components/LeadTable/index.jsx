@@ -1,16 +1,20 @@
 import React, {useEffect, useState } from "react";
+import Modal from "react-modal/lib/components/Modal";
 import { Link } from "react-router-dom";
 import LeadService from "../../services/lead";
 import "./leadTable.css"
 
+Modal.setAppElement('#root')
 
 export function LeadTable () {
 
+    const [lead, setLead] = useState({})
     const [leads, setLeads] = useState([])
     const [index,setIndex] = useState(0)
     const [indexTarget, setIndexTarget] = useState(0)
     const [row,setRow] = useState(0)
     const [rowTarget, setRowTarget] = useState(0)
+    const [isLeadInfoModalOpen, setIsLeadInfoModalOpen] = useState(false)
 
     const status = ["Cliente em Potencial","Dados Confirmados","Reunião Agendada"]
 
@@ -89,6 +93,16 @@ export function LeadTable () {
     }
 
 
+    function handleOpenLeadInfoModal (lead) {
+        setIsLeadInfoModalOpen(true)
+        setLead(lead)
+    }
+
+    function handleCloseLeadInfoModal () {
+        setIsLeadInfoModalOpen(false)
+    }
+
+
 
     return(
         <div className="container">
@@ -109,11 +123,26 @@ export function LeadTable () {
                             <td className="tdLead" onDragOver={event => dragOver(event, 0)} onDrop={event => drop(event, item, status[0])}><p draggable="true" onDragStart={event => drag(event,item,0)} onDragEnd={event => dragEnd(event)}> {item.Status === status[0] ? item.name : ""}</p></td>
                             <td className="tdLead" onDragOver={event => dragOver(event, 1)} onDrop={event => drop(event, item, status[1])}><p draggable="true" onDragStart={event => drag(event,item,1)} onDragEnd={event => dragEnd(event)} > {item.Status === status[1] ? item.name : " "}</p></td>
                             <td className="tdLead" onDragOver={event => dragOver(event, 2)} onDrop={event => drop(event, item, status[2])}><p draggable="false" onDragEnd={event => dragEnd(event)} > {item.Status === status[2] ? item.name : " "}</p></td>
-                            <td><Link to="/lead-table" onClick={event => remove(key,item)} className="tableBtn remove">✖</Link><Link to='#' className="tableBtn details">🛈</Link></td>                         
+                            <td><Link to="/lead-table" onClick={event => remove(key,item)} className="tableBtn remove">✖</Link><Link to='#' onClick={e => handleOpenLeadInfoModal(item)} className="tableBtn details">🛈</Link></td>                         
                         </tr>
                     )}
                 </tbody>
             </table>
+            <Modal className="modal" isOpen={isLeadInfoModalOpen} onRequestClose={handleCloseLeadInfoModal}>
+                <div className="containerModal">
+                    <div>
+                        <h1>Lead</h1>
+                        <p>Nome: {lead.name}</p>
+                        <p>Telefone: {lead.tel}</p>
+                        <p>Email: {lead.email}</p>
+                        <p>Status: {lead.Status}</p>
+                        <p>Oportunidades:</p>
+                            <ul>{lead.Analytics ? <li>Analytics</li> : ""}{lead.BPM ? <li>BPM</li> : ""}{lead["Produto Digital"] ? <li>Produto Digital</li> : ""}{lead.RPA ? <li>RPA</li> : ""}</ul>
+                    </div>
+                    <button className="closeBtn" onClick={handleCloseLeadInfoModal}>✖</button>
+
+                </div>
+            </Modal>
         </div>
     )
 }

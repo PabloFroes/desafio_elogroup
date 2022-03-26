@@ -66,3 +66,53 @@ td{
     color: black;
     font-size: 30px;
 }
+
+
+
+.containerModal{
+    display: flex;
+    justify-content: space-around;
+}
+
+.modal{
+    width: 300px;
+    height: 270px;
+    background-color: white;
+    position: absolute;
+    top: 0; 
+    bottom: 0;
+    left: 0; 
+    right: 0;
+    margin: auto;
+    border: #2196F3 2px solid;
+    border-radius: 2%;
+}
+
+.closeBtn{
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: hidden;
+    color: #2196F3;
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.modal .closeBtn:hover{
+font-size: 22px;
+background-color: unset;
+}
+
+.modal h1{
+    margin: 8px 0 0 0;
+    margin-left: 100px;
+}
+
+.modal p{
+    margin: 5px;
+    font-size: 15px;
+}
+
+.modal ul{
+    margin-top: 4px;
+}
