@@ -32,8 +32,6 @@ export function LeadTable () {
     function remove (index,item) {
         try {
             if(window.confirm(`Deseja realmente deletar essa Lead: \n\n   Nome: ${item.name} \n   Status: ${item.Status}`) === true){
-                console.log(index)
-                console.log("deletando")
                 LeadService.delete(index)
                 window.location.reload(false);
             }else {
@@ -107,7 +105,7 @@ export function LeadTable () {
     return(
         <div className="container">
             <Link to="/lead-create">
-                <button>Novo Lead +</button>   
+                <button className="btnCreateLead">Novo Lead <span>+</span></button>   
             </Link>
             <table className="leadTable">
                 <thead className="leadThead">
@@ -123,7 +121,7 @@ export function LeadTable () {
                             <td className="tdLead" onDragOver={event => dragOver(event, 0)} onDrop={event => drop(event, item, status[0])}><p draggable="true" onDragStart={event => drag(event,item,0)} onDragEnd={event => dragEnd(event)}> {item.Status === status[0] ? item.name : ""}</p></td>
                             <td className="tdLead" onDragOver={event => dragOver(event, 1)} onDrop={event => drop(event, item, status[1])}><p draggable="true" onDragStart={event => drag(event,item,1)} onDragEnd={event => dragEnd(event)} > {item.Status === status[1] ? item.name : " "}</p></td>
                             <td className="tdLead" onDragOver={event => dragOver(event, 2)} onDrop={event => drop(event, item, status[2])}><p draggable="false" onDragEnd={event => dragEnd(event)} > {item.Status === status[2] ? item.name : " "}</p></td>
-                            <td><Link to="/lead-table" onClick={event => remove(key,item)} className="tableBtn remove">✖</Link><Link to='#' onClick={e => handleOpenLeadInfoModal(item)} className="tableBtn details">🛈</Link></td>                         
+                            <td className="tableBtn"><Link to="/lead-table" onClick={event => remove(key,item)} className="remove" title="Remover Lead">✖</Link><Link to='#' onClick={e => handleOpenLeadInfoModal(item)} className="details" title="Mais informações">🛈</Link></td>                         
                         </tr>
                     )}
                 </tbody>

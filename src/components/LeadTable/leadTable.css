@@ -14,6 +14,10 @@
     background-color: #44a8fa;
 }
 
+.btnCreateLead span{
+    font-weight: bolder;
+}
+
 .leadTable{
     font-size: 16px;
     width: 100%;
@@ -50,24 +54,23 @@ td{
 .trLead:nth-child(odd) {
     background: #FFF
 }
-.tableBtn{
-    margin: 5px;
-    color: white;
-}
 
-.tableBtn.remove{
-    margin-top: 10px;
+.tableBtn .remove{
+    color: white;
+    margin-top: 20px;
     padding: 0 5px 0 5px;
-    background-color: red;
+    background-color: rgb(255, 116, 106);
     border-radius: 100%;
 }
 
-.tableBtn.details{
+.tableBtn .remove:hover{
+    background-color: rgb(255, 71, 58);;
+}
+
+.tableBtn .details{
     color: black;
     font-size: 30px;
 }
-
-
 
 .containerModal{
     display: flex;

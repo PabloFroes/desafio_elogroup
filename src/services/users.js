@@ -1,5 +1,6 @@
 const userAlreadyExist = "Usuário já existente";
 const userOrPassWrong = "Usuário ou senha incorreto";
+const userNotExist = "Nenhum Usuário cadastrado";
 
 const UsersService = {
 
@@ -24,7 +25,13 @@ const UsersService = {
 
     login: (username,password) => {
         const users = JSON.parse(localStorage.getItem("users"))
+        if(!users){
+            throw userNotExist
+        } 
         const user = users.find(user => user.username === username)
+        if(!user){
+            throw userOrPassWrong
+        }
         try {
                 if(user.username === username && user.password === password){
                     localStorage.setItem("userLogged", JSON.stringify({username,password}))
