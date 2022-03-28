@@ -87,7 +87,7 @@ td{
     left: 0; 
     right: 0;
     margin: auto;
-    border: #2196F3 2px solid;
+    border: black 2px solid;
     border-radius: 2%;
 }
 
@@ -106,9 +106,12 @@ font-size: 22px;
 background-color: unset;
 }
 
+.modal .content{
+    height: 280px;
+}
+
 .modal h1{
-    margin: 8px 0 0 0;
-    margin-left: 100px;
+    margin: 8px 0 0 100px;
 }
 
 .modal p{
@@ -118,4 +121,29 @@ background-color: unset;
 
 .modal ul{
     margin-top: 4px;
+}
+
+.modal.leadDelete{
+    height: 330px;
+}
+
+.modal.leadDelete .btnContainer{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+
+}
+.modal.leadDelete .btnContainer button{
+    width: 140px;
+    margin: auto;
+    font-size: 16px;
+}
+
+.modal.leadDelete .btnContainer .delete{
+    color: white;
+    background-color: rgb(255, 71, 58);
+}
+
+.modal.leadDelete .btnContainer .delete:hover{
+    background-color: rgb(253, 24, 8);
 }

@@ -8,10 +8,10 @@ const LeadService = {
             if(leads){
                 leads.push(lead)
                 localStorage.setItem("leads", JSON.stringify(leads))
-                alert("Lead incluído com sucesso")
+                //alert("Lead incluído com sucesso")
             }else {
                 localStorage.setItem("leads", JSON.stringify([lead]))
-                alert("Lead incluído com sucesso")
+                //alert("Lead incluído com sucesso")
             }
         } catch (error) {
             throw error
@@ -46,8 +46,7 @@ const LeadService = {
             const leads = JSON.parse(localStorage.getItem("leads"))
             if(leads){
                 leads.splice(index,1)
-                localStorage.setItem("leads", JSON.stringify(leads))  
-                console.log("lead deleted") 
+                localStorage.setItem("leads", JSON.stringify(leads)) 
             }else{
                 throw leadError
             }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Modal from "react-modal/lib/components/Modal";
 import { Link, Navigate } from "react-router-dom";
 import LeadService from "../../services/lead";
 import "./leadCreateForm.css";
@@ -16,6 +17,7 @@ export function LeadCreateForm () {
     const[error, setError] = useState("")
     //const oportunidades = ["RPA","Produto Digital","Analytics","BPM"]
     const[redirect, setRedirect] = useState(false)
+    const[isLeadCreatedModalOpen, setIsLeadCreatedModalOpen] = useState(false)
 
     const errorCheckbox = "Necessário selecionar ao menos uma oportunidade"
 
@@ -34,7 +36,8 @@ export function LeadCreateForm () {
             if(checkbox1 || checkbox2 || checkbox3 || checkbox4){
                 const lead = {name,tel,email,"RPA":checkbox1,"Produto Digital":checkbox2,"Analytics":checkbox3,"BPM":checkbox4,"Status": "Cliente em Potencial"}
                 LeadService.create(lead)
-                setRedirect(true)
+                handleOpenLeadCreatedModal()
+                
             }else {
                 throw errorCheckbox
             }
@@ -45,6 +48,15 @@ export function LeadCreateForm () {
 
     if(redirect){
         return <Navigate to="/lead-table"/>
+    }
+
+    function handleOpenLeadCreatedModal (lead) {
+        setIsLeadCreatedModalOpen(true)
+    }
+
+    function handleCloseLeadCreatedModal () {
+        setIsLeadCreatedModalOpen(false)
+        setRedirect(true)
     }
 
 
@@ -98,6 +110,15 @@ export function LeadCreateForm () {
                     <p className="error leadCreate">{error ? error : ""}</p>
                 </div>
             </form>
+            <Modal className="modal leadCreated" isOpen={isLeadCreatedModalOpen} onRequestClose={handleCloseLeadCreatedModal}>
+                <div className="containerModal">
+                    <div>
+                        <h1>Lead incluído com sucesso </h1>
+                    </div>
+                    <button className="closeBtn" onClick={handleCloseLeadCreatedModal}>✖</button>
+
+                </div>
+            </Modal>
         </div>
     )
 }
